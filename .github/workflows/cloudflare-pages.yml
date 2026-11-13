@@ -1,0 +1,36 @@
+name: Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare versioned site
+        env:
+          COMMIT: ${{ github.sha }}
+        run: |
+          site="$RUNNER_TEMP/vibeoffice-pages"
+          mkdir -p "$site"
+          cp -R public/. "$site/"
+          tools/web-release.sh "$site" "$(tools/current-tree-version.sh "$COMMIT")"
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ${{ runner.temp }}/vibeoffice-pages --project-name=vibeoffice --branch=main

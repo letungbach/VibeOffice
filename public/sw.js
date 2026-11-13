@@ -1,5 +1,5 @@
 /* VibeOffice service worker: the published site, cached for offline use, one version per page.
- * Works only on the allowed origins (cached()): https://vibeoffice.work/, and 127.0.0.1 on any port, to try a
+ * Works only on the allowed origins (cached()): https://vibeoffice.work/, https://office.giong.ai/, and 127.0.0.1 on any port, to try a
  * published copy locally. common/suite.js registers it there alone, from every page of the web edition (never in
  * the desktop app); its scope is public/, which is / on the site.
  *
@@ -42,8 +42,8 @@
 importScripts('common/zip.js');   // L.zip, the apps' ZIP engine; a change to it is a change to this worker too
 
 const VERSION = 'dev';   // stamped by tools/web-release.sh
-/** the origins this worker caches on: the published site, and 127.0.0.1 (any port) for a published copy served locally */
-const cached = (url) => url.origin === 'https://vibeoffice.work' || url.hostname === '127.0.0.1';
+/** the origins this worker caches on: the published sites, and 127.0.0.1 (any port) for a published copy served locally */
+const cached = (url) => url.origin === 'https://vibeoffice.work' || url.origin === 'https://office.giong.ai' || url.hostname === '127.0.0.1';
 const ON = VERSION !== 'dev' && cached(self.location);
 const PREFIX = 'vibeoffice-';
 const CLIENTS = PREFIX + 'clients';

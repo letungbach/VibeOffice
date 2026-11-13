@@ -1,0 +1,86 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sw.js
+  Cache-Control: no-store
+  Content-Type: text/javascript; charset=utf-8
+
+/*.webmanifest
+  Content-Type: application/manifest+json
+
+/*.xml
+  Content-Type: application/xml; charset=utf-8
+
+/*.json
+  Content-Type: application/json; charset=utf-8
+
+/*.js
+  Content-Type: text/javascript; charset=utf-8
+
+/*.css
+  Content-Type: text/css; charset=utf-8
+
+/*.svg
+  Content-Type: image/svg+xml
+
+/*.woff2
+  Content-Type: font/woff2
+
+/*.zip
+  Content-Type: application/zip
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.docx
+  Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+
+/*.docm
+  Content-Type: application/vnd.ms-word.document.macroEnabled.12
+
+/*.dotx
+  Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.template
+
+/*.dotm
+  Content-Type: application/vnd.ms-word.template.macroEnabled.12
+
+/*.xlsx
+  Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+/*.xlsm
+  Content-Type: application/vnd.ms-excel.sheet.macroEnabled.12
+
+/*.xltx
+  Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.template
+
+/*.xltm
+  Content-Type: application/vnd.ms-excel.template.macroEnabled.12
+
+/*.pptx
+  Content-Type: application/vnd.openxmlformats-officedocument.presentationml.presentation
+
+/*.pptm
+  Content-Type: application/vnd.ms-powerpoint.presentation.macroEnabled.12
+
+/*.ppsx
+  Content-Type: application/vnd.openxmlformats-officedocument.presentationml.slideshow
+
+/*.ppsm
+  Content-Type: application/vnd.ms-powerpoint.slideshow.macroEnabled.12
+
+/*.potx
+  Content-Type: application/vnd.openxmlformats-officedocument.presentationml.template
+
+/*.potm
+  Content-Type: application/vnd.ms-powerpoint.template.macroEnabled.12
+
+/fonts/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/icons/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/*/preview.jpg
+  Cache-Control: public, max-age=86400, must-revalidate

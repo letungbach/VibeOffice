@@ -256,7 +256,7 @@
   };
 
   /* ------------------------------------------------------------ service worker */
-  /* The published site, https://vibeoffice.work/, is cached for offline use, one version per page (sw.js); the
+  /* The published sites, https://vibeoffice.work/ and https://office.giong.ai/, are cached for offline use, one version per page (sw.js); the
      worker is registered there and on 127.0.0.1 (any port: a published copy tried locally; the dev server's own
      files are unstamped, so the worker caches nothing there), and anywhere else (preview deployments) any earlier
      registration is removed. While the worker caches a version it reports to every page: 'vo-cache' on window, detail { state:
@@ -264,7 +264,7 @@
      version }. updateViaCache 'none': the browser always asks the server for sw.js, so a new version is found on
      the next visit. */
   if (VO.host.kind === 'web' && 'serviceWorker' in navigator) {
-    if (location.origin === 'https://vibeoffice.work' || location.hostname === '127.0.0.1') {
+    if (location.origin === 'https://vibeoffice.work' || location.origin === 'https://office.giong.ai' || location.hostname === '127.0.0.1') {
       navigator.serviceWorker.register(BASE + 'sw.js', { updateViaCache: 'none' }).catch((e) => console.warn('service worker:', e.message));
       navigator.serviceWorker.addEventListener('message', (e) => {
         if (e.data && e.data.type === 'vo-cache') window.dispatchEvent(new CustomEvent('vo-cache', { detail: e.data }));
@@ -275,10 +275,10 @@
     }
   }
 
-  /* Installing is offered only on the published site and on 127.0.0.1 (trying it locally): anywhere else (preview
+  /* Installing is offered only on the published sites and on 127.0.0.1 (trying it locally): anywhere else (preview
      deployments, a copy) the browser's own install prompt is cancelled, and the Start Center shows no Install button
      (start.js) */
-  VO.offersInstall = location.origin === 'https://vibeoffice.work' || location.hostname === '127.0.0.1';
+  VO.offersInstall = location.origin === 'https://vibeoffice.work' || location.origin === 'https://office.giong.ai' || location.hostname === '127.0.0.1';
   if (!VO.offersInstall) window.addEventListener('beforeinstallprompt', (e) => e.preventDefault());
 
   /* ------------------------------------------------------------ IndexedDB */
